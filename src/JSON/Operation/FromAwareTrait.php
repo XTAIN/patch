@@ -3,13 +3,11 @@
 namespace XTAIN\Patch\JSON\Operation;
 
 use XTAIN\Patch\JSON\Pointer;
-use JMS\Serializer\Annotation as Serializer;
 
 trait FromAwareTrait
 {
 	/**
 	 * @var Pointer
-	 * @Serializer\Type("XTAIN\Patch\JSON\Pointer")
 	 */
 	protected $from;
 

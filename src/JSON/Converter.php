@@ -52,13 +52,13 @@ final class Converter implements ConverterInterface
 		$path = new Pointer($item["path"]);
 		$value = null;
 		$from = null;
-		if (isset($operation["value"])) {
-			$value = new Value($operation["value"]);
+		if (isset($item["value"])) {
+			$value = new Value($item["value"]);
 		}
-		if (isset($operation["from"])) {
-			$from = new Pointer($operation["from"]);
+		if (isset($item["from"])) {
+			$from = new Pointer($item["from"]);
 		}
-		switch ($operation["op"]) {
+		switch ($item["op"]) {
 			case 'test':
 				$operation = new Test($path, $value);
 				break;
@@ -77,6 +77,8 @@ final class Converter implements ConverterInterface
 			case 'copy':
 				$operation = new Copy($path, $from);
 				break;
+			default:
+				throw new InvalidOperationException();
 		}
 
 		return $operation;
@@ -89,8 +91,19 @@ final class Converter implements ConverterInterface
 	 */
 	public function fromPatch(string $patch): PatchInterface
 	{
-		$items = \json_decode($patch, true);
+		return $this->fromArray(
+			\json_decode($patch, true)
+		);
+	}
 
+	/**
+	 * @param array $items
+	 *
+	 * @throws InvalidOperationException
+	 * @return PatchInterface
+	 */
+	public function fromArray(array $items): PatchInterface
+	{
 		$patch = new Patch();
 		foreach ($items as $item) {
 			$patch->addOperation(

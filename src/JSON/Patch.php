@@ -2,6 +2,9 @@
 
 namespace XTAIN\Patch\JSON;
 
+use JMS\Serializer\DeserializationContext;
+use JMS\Serializer\JsonDeserializationVisitor;
+use JMS\Serializer\JsonSerializationVisitor;
 use XTAIN\Patch\JSON\Operation\AbstractOperation;
 use XTAIN\Patch\PatchInterface;
 use JMS\Serializer\Annotation as Serializer;
@@ -14,7 +17,6 @@ use JMS\Serializer\Annotation as Serializer;
 class Patch implements \JsonSerializable, PatchInterface
 {
 	/**
-	 * @Serializer\Type("array<XTAIN\Patch\JSON\Operation\AbstractOperation>")
 	 * @var AbstractOperation[]
 	 */
 	protected $operations = [];

@@ -2,18 +2,10 @@
 
 namespace XTAIN\Patch\JSON;
 
-use JMS\Serializer\Annotation as Serializer;
-
 final class Value implements \JsonSerializable
 {
-	const PROPERTY = 'value';
-
-	use ValueTrait;
-
 	/**
 	 * @var mixed
-	 *
-	 * @Serializer\Exclude()
 	 */
 	private $value;
 
@@ -50,5 +42,4 @@ final class Value implements \JsonSerializable
 	{
 		return $this->value;
 	}
-
 }

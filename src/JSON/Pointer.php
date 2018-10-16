@@ -4,10 +4,6 @@ namespace XTAIN\Patch\JSON;
 
 final class Pointer implements \JsonSerializable
 {
-	const PROPERTY = 'pointer';
-
-	use ValueTrait;
-
 	/**
 	 * @var string
 	 */

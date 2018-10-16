@@ -3,13 +3,11 @@
 namespace XTAIN\Patch\JSON\Operation;
 
 use XTAIN\Patch\JSON\Value;
-use JMS\Serializer\Annotation as Serializer;
 
 trait ValueAwareTrait
 {
 	/**
 	 * @var Value
-	 * @Serializer\Type("XTAIN\Patch\JSON\Value")
 	 */
 	protected $value;
 
