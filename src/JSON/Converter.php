@@ -52,7 +52,7 @@ final class Converter implements ConverterInterface
 		$path = new Pointer($item["path"]);
 		$value = null;
 		$from = null;
-		if (isset($item["value"])) {
+		if (array_key_exists("value", $item)) {
 			$value = new Value($item["value"]);
 		}
 		if (isset($item["from"])) {
